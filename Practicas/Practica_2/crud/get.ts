@@ -1,4 +1,4 @@
-// A la hora de la verdad no hemos utilizado este archivo, el la funcion get está desarrollada dentro del propio main.
+//Esta incompleto. No funciona.
 
 import { Database, ObjectId } from "https://deno.land/x/mongo@v0.31.1/mod.ts";
 import { getQuery } from "https://deno.land/x/oak@v11.1.0/helpers.ts";
