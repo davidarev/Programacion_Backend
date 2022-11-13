@@ -8,7 +8,7 @@ import { User } from "./types.ts";
 const router=new Router();
 let users:User[]=[];
 router
-.get("/getUser/:user", (context)=>{
+.get("/getUser/:user", (context)=>{ //Este metodo no funciona
   if (context.params?.user) {
      const user: User | undefined = users.find(
        (user) => (user.email || user.dni || user.telefono || user.iban || user.id) === context.params.user
