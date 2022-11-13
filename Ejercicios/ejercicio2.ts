@@ -1,3 +1,22 @@
+/*
+Completar la función object2string para que la igualdad final sea true
+const obj = {
+    name: "Alberto",
+    age: 22,
+    friends: ["Luis", "María", "Jose"],
+    parents: [
+        {key: "padre", value: "Luis"},
+        {key: "madre", value: "Lola"}
+    ]
+}
+const object2String = (obj: unknown):string => {
+   let str = "";
+   // .....
+   return str;
+}
+object2String(obj) === JSON.stringify(obj);
+*/
+
 const obj = {
     name: "David",
     edad: 20,
