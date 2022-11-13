@@ -24,7 +24,8 @@ const obj = {
     padres: [
         {key: "Padre", value: "Jorge"},
         {key: "Madre", value: "Rut"}
-    ]
+    ],
+    perro: true
 }
 
 const objectToString = (obj: unknown): string => {
@@ -42,7 +43,7 @@ const objectToString = (obj: unknown): string => {
   return "";
 };
 
-console.log(objectToString(obj));
+console.log(objectToString(obj)
 console.log(JSON.stringify(obj));
 
 // check if it works
