@@ -27,3 +27,5 @@ Los ID deberan ser los ID de la coleccion Users. Para la realizacion de esta pra
 * Siempre se devuelva una respuesta a las peticiones
 * Se usan los HTTP Codes correctos en cada peticion
 * Se usan los mètodos correctos segun lo visto en clase
+-----------------------------------
+Nota: 6,5
