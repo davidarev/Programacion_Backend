@@ -52,7 +52,7 @@ getBooks -> Get = devolvera una lista paginada de como maximo 10 libros. Los par
 getUser/id -> Get = devolverá un usuario 
   * se usuará el _id de Mongo
 
-**IMPORTANTE TENER EN CUENTA LO SIGUIENTE
+**IMPORTANTE TENER EN CUENTA LO SIGUIENTE**
 
 La entrega se realizará subiendo el .zip que genera github al hacer la realese, añadiendo la URL del repositorio e indicando los integrantes del grupo
 Si el servidor se detiene por un error no controlado supondra un suspenso
