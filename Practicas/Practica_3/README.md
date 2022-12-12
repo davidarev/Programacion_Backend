@@ -54,7 +54,7 @@ getUser/id -> Get = devolverá un usuario
 
 **IMPORTANTE TENER EN CUENTA LO SIGUIENTE**
 
-La entrega se realizará subiendo el .zip que genera github al hacer la realese, añadiendo la URL del repositorio e indicando los integrantes del grupo
+La entrega se realizará subiendo el .zip que genera github al hacer la realese, añadiendo la URL del repositorio e indicando los integrantes del grupo.
 Si el servidor se detiene por un error no controlado supondra un suspenso
 
 --------------------------
