@@ -22,7 +22,7 @@ Para esta segunda practica se os pide que realizar la API para un banco. Para el
 ** ID_Sender
 ** ID_Reciber
 ** amount
-Los ID deberan ser los ID de la coleccion Users. \n Para la realizacion de esta practica se tendra en cuenta lo siguiente:
+Los ID deberan ser los ID de la coleccion Users. Para la realizacion de esta practica se tendra en cuenta lo siguiente:
 * Se gestionen los errores, si el servidor se para por un error sera un suspenso
 * Siempre se devuelva una respuesta a las peticiones
 * Se usan los HTTP Codes correctos en cada peticion
