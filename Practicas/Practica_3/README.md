@@ -1,7 +1,7 @@
-Para esta tercera práctica se pide que desarrolléis una API REST para una librería. 
-Se deberá crear un .env con los siguientes campos
-URL_MONGO = con la url al servidor de mongo
-PORT = con el puerto para que corra el servidor
+Para esta tercera práctica se pide que desarrolléis una API REST para una librería. Se deberá crear un .env con los siguientes campos:
+* URL_MONGO = con la url al servidor de mongo
+* PORT = con el puerto para que corra el servidor
+
 NO se puede subir el .env al repositorio, en este caso se deberá subir un .env.sample
 La base de datos debera ser OBLIGATORIAMENTE con MongoDB y tendra las siguientes colecciones:
   User
@@ -35,7 +35,7 @@ deleteUser -> Delete = eliminará un usuario
 updateCart -> Put = añadirá un libro al carrito
   id_book
   id_user
-getBooks -> Get = devolvera una lista paginada de como maximo 10 libros. Los parametros se deberan pasar por url.
+getBooks -> Get = devolvera una lista paginada de como maximo 10 libros. Los parametros se deberan pasar por url. NOTA: No funciona al 100%.
   page: indicando la pagina que queremos (empezara por 0)
   title: campo opcional indicando el titulo que queremos
   http://localhost:PORT/getBooks?page=1&title=prueba
@@ -45,3 +45,5 @@ getUser/id -> Get = devolverá un usuario
 IMPORTANTE TENER EN CUENTA LO SIGUIENTE
 La entrega se realizará subiendo el .zip que genera github al hacer la realese, añadiendo la URL del repositorio e indicando los integrantes del grupo
 Si el servidor se detiene por un error no controlado supondra un suspenso
+--------------------------
+Nota: 5 (por mala entrega)
