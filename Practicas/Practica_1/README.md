@@ -5,3 +5,5 @@ El array puede tener números en formato string, en este caso se deberá convert
 Todas las posibles excepciones deberán ser controladas.
 El array pasado por parámetros puede ser un array de arrays, el cual antes de procesarlo deberá ser aplanado, por ejemplo:
 [ [ 1, 2, 3 ],  2, [ 4, 5, 6 ] ] => [1,2,3,2,4,5,6]
+------------------------------------------------------------------
+Nota: 8
