@@ -15,7 +15,8 @@ export type BancoModel = OptionalId<{
   usuarios: ObjectId[],
 }>
 
-//TIPOS DE DATOS DESDE LA API
+//TIPOS DE DATOS DESDE LA API NINJA
+// https://api-ninjas.com/api/iban
 export type APIIBAN = {
     bank_name: string    
 }
