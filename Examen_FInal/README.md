@@ -4,6 +4,7 @@
 No se debe conectar correctamente a la API 'https://api.api-ninjas.com/v1/city', debido a que cuando intento tomar los datos de los parametros *latitude* y *longitude*, 
 por alguna razón no los coge, el tipo de dato que se almacena en BBDD para esos valores es **UNDEFINED**.
 
+```TypeScript
 //API City
 const url_city = `https://api.api-ninjas.com/v1/city?name=${ciudad}`
 const data_city = await fetch(url_city, {
@@ -17,7 +18,7 @@ const latitud = response_city.latitude; //Por alguna razón, es valor es 'undefi
 const longitud = response_city.longitude; //Por alguna razón, es valor es 'undefined'
 //console.log("Latitud: ", latitud);
 //console.log("Longitud: ", longitud);
-
+```
 ## ALTERNATIVA
 Las querys **getRestaurants** y **getRestaurant** funcionan correctamente, pero claro, si en la BBDD el Restaurante tiene los valores *latitud* y *longitud* nulos, 
 no es posible determinar la **temperatura_actual** ni la **hora_local** del Restaurante, ya que para obtener estos datos, utilizo los dos parametros anteriores.
@@ -27,6 +28,7 @@ correctamente todos los atributos** solicitados en el enunciado.
 
 ### RESPUESTAS
 Respuesta al llamar a la query getRestaurants(ciudad: "Madrid) cuyos Restaurantes tienen **latitud** y **longitud**:
+```JSON
 {
   "data": {
     "getRestaurants": [
@@ -49,11 +51,12 @@ Respuesta al llamar a la query getRestaurants(ciudad: "Madrid) cuyos Restaurante
     ]
   }
 }
-
+```
 -----------------
 
 Respuesta al llamar a la query getRestaurants(ciudad: "Leon") cuyos Restaurantes no tienen **latitud** y **longitud** (valor nulos, al crearlos usando el resolver 
 addRestaurant):
+```JSON
 {
   "errors": [
     {
@@ -80,3 +83,4 @@ addRestaurant):
   ],
   "data": null
 }
+```
