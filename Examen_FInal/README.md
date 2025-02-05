@@ -1,90 +1,98 @@
-# NOTA
-8,8
+# Examen Ordinaria
 
+## Objetivo
 
-# ASPECTOS A TENER EN CUENTA
+Desarrollar una API en GraphQL que permita gestionar una lista de restaurantes.
 
-## addRestaurant
-No se debe conectar correctamente a la API 'https://api.api-ninjas.com/v1/city', debido a que cuando intento tomar los datos de los parametros *latitude* y *longitude*, 
-por alguna razón no los coge, el tipo de dato que se almacena en BBDD para esos valores es **UNDEFINED**.
+## Requisitos
 
-```TypeScript
-//API City
-const url_city = `https://api.api-ninjas.com/v1/city?name=${ciudad}`
-const data_city = await fetch(url_city, {
-    headers: {
-        'X-Api-Key': API_KEY
-    }
-});
-if(data_city.status !== 200) throw new GraphQLError("ERROR: No se ha conectado correctamente a la API City");
-const response_city: APICity = await data_city.json();
-const latitud = response_city.latitude; //Por alguna razón, es valor es 'undefined'
-const longitud = response_city.longitude; //Por alguna razón, es valor es 'undefined'
-//console.log("Latitud: ", latitud);
-//console.log("Longitud: ", longitud);
-```
-## ALTERNATIVA
-Las querys **getRestaurants** y **getRestaurant** funcionan correctamente, pero claro, si en la BBDD el Restaurante tiene los valores *latitud* y *longitud* nulos, 
-no es posible determinar la **temperatura_actual** ni la **hora_local** del Restaurante, ya que para obtener estos datos, utilizo los dos parametros anteriores.
+### Resolvers
 
-Debido a eso, he creado manualmente dos Restaurante en la BBDD para poder introducir la *latitud* y la *longitud*, podrás comprobar que en ese caso **se devuelven 
-correctamente todos los atributos** solicitados en el enunciado.
+- **addRestaurant (3 puntos)**
+  - Esta mutación debe aceptar los siguientes parámetros:
+    - **Nombre del restaurante**: `String` (por ejemplo, "Restaurante El Buen Sabor")
+    - **Dirección del restaurante**: `String` (por ejemplo, "Calle Mayor, 123")
+    - **Ciudad**: `String` (por ejemplo, "Madrid")
+    - **Número de teléfono**: `String` (incluyendo prefijo nacional, por ejemplo, "+34911223344").  
+      *Se debe verificar que el número de teléfono es válido.*
 
-### RESPUESTAS
-Respuesta al llamar a la query getRestaurants(ciudad: "Madrid) cuyos Restaurantes tienen **latitud** y **longitud**:
-```JSON
-{
-  "data": {
-    "getRestaurants": [
-      {
-        "id": "679cedfcac1b8a2d3032ad02",
-        "nombre": "VIPS",
-        "direccion_restaurante": "Gran Via, 1, Madrid, Spain",
-        "telefono": "+34987654321",
-        "temperatura_actual": "11",
-        "hora_local": "17:31"
-      },
-      {
-        "id": "679cf0bbac1b8a2d3032ad03",
-        "nombre": "Ginos",
-        "direccion_restaurante": "Calle Cristina Oria, 3, Madrid, Spain",
-        "telefono": "+34987654322",
-        "temperatura_actual": "11",
-        "hora_local": "17:31"
-      }
-    ]
-  }
-}
-```
------------------
+- **getRestaurant (3 puntos)**
+  - Esta consulta debe aceptar el parámetro `id` generado por MongoDB y devolver:
+    - `id`: ID del restaurante generado por MongoDB.
+    - **Nombre del restaurante**
+    - **Dirección del restaurante**: Será un `String` compuesto por la dirección, la ciudad y el país (por ejemplo, "Calle Mayor, 123, Madrid, España").
+    - **Número de teléfono**
+    - **Temperatura actual en la ciudad**: Obtenido a través de la API de Clima de API Ninjas.
+    - **Hora local en la ubicación del restaurante**: Obtenida a través de la API de Zona Horaria de API Ninjas, en un `String` con formato `hh:mm`.
 
-Respuesta al llamar a la query getRestaurants(ciudad: "Leon") cuyos Restaurantes no tienen **latitud** y **longitud** (valor nulos, al crearlos usando el resolver 
-addRestaurant):
-```JSON
-{
-  "errors": [
-    {
-      "message": "ERROR: No se ha conectado correctamente a la API World Time",
-      "locations": [
-        {
-          "line": 8,
-          "column": 5
-        }
-      ],
-      "path": [
-        "addRestaurant",
-        "hora_local"
-      ],
-      "extensions": {
-        "code": "INTERNAL_SERVER_ERROR",
-        "stacktrace": [
-          "GraphQLError: ERROR: No se ha conectado correctamente a la API World Time",
-          "    at Object.hora_local (file:///Users/davidarevalo/Library/Mobile Documents/com~apple~CloudDocs/Nebrija/5º Año/1er Semestre/Backend/Examen final GRAPHQL/resolvers.ts:125:53)",
-          "    at eventLoopTick (ext:core/01_core.js:175:7)"
-        ]
-      }
-    }
-  ],
-  "data": null
-}
-```
+- **getRestaurants (2 puntos)**
+  - Recibe como parámetro el nombre de la ciudad.
+  - Debe devolver todos los restaurantes almacenados que se encuentren en dicha ciudad, con los mismos campos mencionados anteriormente.
+
+- **deleteRestaurant (2 puntos)**
+  - Esta mutación debe aceptar el parámetro `id` generado por MongoDB y devolver `true` o `false` en función de si el restaurante se ha borrado satisfactoriamente o no.
+
+### Notas
+
+- Se debe comprobar que el número de teléfono es correcto a través de API Ninjas. Si no es correcto, la mutación devolverá un error de GraphQL.
+- No se permite más de un restaurante con el mismo número de teléfono. Si ya existe el número, se debe devolver un error de GraphQL.
+- Para obtener el clima actual, el país y la hora local de la ubicación del restaurante, se utilizarán las API Ninjas.
+
+## Entrega
+
+- Enlace a una release de GitHub.
+- Archivo comprimido generado en la release.
+- Enlace al despliegue de la aplicación en Deno Deploy.
+
+> **Nota:** La falta de los dos primeros elementos supone un 0 en el examen.
+
+## Instrucciones
+
+- Crea una API GraphQL utilizando Deno con Apollo Server.
+- Utiliza una base de datos MongoDB (Mongo Atlas) para almacenar y gestionar los datos.
+
+## Evaluación
+
+Se evaluará la funcionalidad, el diseño de la API, la implementación de la base de datos y la corrección del código.
+
+### Criterios de evaluación de cada apartado
+
+- **100% de la puntuación:**
+  - La funcionalidad es tal y como se pide en el enunciado.
+  - El código es correcto.
+
+- **60% de la puntuación:**
+  - La funcionalidad es tal y como se pide en el enunciado.
+  - El código presenta errores o malas prácticas, tales como:
+    - Errores no controlados.
+    - Error en el tipado.
+    - Código duplicado o redundante.
+    - Consultas innecesarias o subóptimas a la base de datos.
+
+- **30% de la puntuación:**
+  - Faltan funcionalidades de las que se piden en el enunciado, pero las que están presentes son correctas.
+  - El código es correcto (aunque incompleto).
+
+- **0% de la puntuación:**
+  - Faltan funcionalidades o las que están presentes son incorrectas.
+  - El código presenta errores y malas prácticas.
+
+## Normativa
+
+- El examen se podrá realizar con ordenador propio u ordenador del aula.
+- En caso de usar ordenador propio, cualquier problema técnico (incluida la conectividad) será responsabilidad exclusiva del alumno.
+- Se deberá grabar la pantalla completa en todo momento.
+- No se podrá usar ningún otro tipo de apuntes o proyectos de ejemplo, ni código que esté localmente en el ordenador.
+- Se podrá tener un proyecto iniciado y ya desplegado en Deno Deploy si se desea. El proyecto solo debe incluir la parte habitual y común, **no** se puede tener un proyecto con código innecesario (por ejemplo, un proyecto completo de GitHub).
+- No se pueden usar herramientas de IA (Copilot, etc.) en VSCode o cualquier otro editor.
+- Si el proyecto no funciona correctamente en Deno Deploy, será evaluado con una puntuación del 60% de la nota obtenida.
+
+### URLs de Referencia
+
+- [Deno](https://deno.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [npm](https://www.npmjs.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [MDN Web Docs](https://developer.mozilla.org/)
+- [Apollo GraphQL](https://www.apollographql.com/)
+- [GraphQL](https://graphql.org/)
