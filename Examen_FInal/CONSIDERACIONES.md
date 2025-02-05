@@ -1,7 +1,10 @@
-# NOTA
-8,8
-
-
+# PUNTUACIÓN
+- **addRestaurant (3 puntos)**: --> Satisfactorio (60%) --> 1.8
+- **getRestaurant (3 puntos)**: --> Excelente (100%) --> 3
+- **getRestaurants (2 puntos)**: --> Excelente (100%) --> 2
+- **deleteRestaurant (2 puntos)**: --> Excelente (100%) --> 2
+  
+**NOTA FINAL = 8.8**
 
 # ASPECTOS A TENER EN CUENTA
 
