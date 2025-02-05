@@ -4,7 +4,9 @@
 - **getRestaurants (2 puntos)**: --> Excelente (100%) --> 2
 - **deleteRestaurant (2 puntos)**: --> Excelente (100%) --> 2
   
-**NOTA FINAL = 8.8**
+### NOTA FINAL = 8.8
+
+----------------
 
 # ASPECTOS A TENER EN CUENTA
 
